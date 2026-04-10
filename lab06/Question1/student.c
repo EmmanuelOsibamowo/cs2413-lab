@@ -11,13 +11,23 @@
 
 
 int count_edges(Graph* g) {
-    // TODO: implement
-    // return -1;
+    int count = 0;
+    
+    // Iterate through each row of the adjacency matrix
+    for (int i = 0; i < g->num_nodes; i++) {
+        // Iterate through each column of the adjacency matrix
+        for (int j = 0; j < g->num_nodes; j++) {
+            // If there is an edge (1), increment the counter
+            if (g->adj[i][j] == 1) {
+                count++;
+            }
+        }
+    }
 
+    // Since it's an undirected graph, adj[u][v] and adj[v][u] 
+    // represent the same single edge. We divide by 2 to get the actual count.
+    return count / 2;
 }
-
-
-
 
 
 
