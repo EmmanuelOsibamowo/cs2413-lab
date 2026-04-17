@@ -1,5 +1,6 @@
 #include "Student.h"
 #include <stdlib.h>
+#include <string.h>
 
 //You are given a large integer represented as an integer array digits, where:
 
@@ -26,8 +27,21 @@
 //Output parameter (returnSize): set *returnSize to the number of digits in the returned array.
 
 int* plusOne(int* digits, int digitsSize, int* returnSize) {
-    // TODO: implement
+    for (int i = digitsSize - 1; i >= 0; i--) {
+        if (digits[i] < 9) {
+            digits[i]++;
+            *returnSize = digitsSize;
+            int* result = (int*)malloc(digitsSize * sizeof(int));
+            memcpy(result, digits, digitsSize * sizeof(int));
+            return result;
+        }
+        digits[i] = 0;
+    }
 
+    *returnSize = digitsSize + 1;
+    int* result = (int*)malloc((*returnSize) * sizeof(int));
+    memset(result, 0, (*returnSize) * sizeof(int));
+    result[0] = 1;
     
+    return result;
 }
-
